@@ -293,7 +293,7 @@ end
 # than I've already had to...).
 module Net
   class HTTPGenericRequest
-    def send_request_with_body_stream(sock, ver, path, f)
+    def send_request_with_body_stream(sock, ver, path, f, send_only = nil)
       raise ArgumentError, "Content-Length not given and Transfer-Encoding is not `chunked'" unless content_length() or chunked?
       unless content_type()
         warn 'net/http: warning: Content-Type did not set; using application/x-www-form-urlencoded' if $VERBOSE
